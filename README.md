@@ -1,2 +1,2 @@
 # Technique-Notes
-This is the personal technique notes including some important knowledges.
+Notes for recording important technique tips.
