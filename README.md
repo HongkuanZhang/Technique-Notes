@@ -1,2 +1,2 @@
 # Technique-Notes
-Personal knowledge base
+This is a personal technique notes including some important knowledges.
