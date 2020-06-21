@@ -46,13 +46,13 @@ $ sudo reboot
 2. Install files
 ```
 # first install the runtime library
-$ sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.2_amd64.deb
+$ sudo dpkg -i libcudnn7_7.6.5.32-1+cuda10.1_amd64.deb
 
 # then developer library
-$ sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.2_amd64.deb
+$ sudo dpkg -i libcudnn7-dev_7.6.5.32-1+cuda10.1_amd64.deb
 
 # last the sample codes
-$ sudo dpkg -i libcudnn7-doc_7.6.5.32-1+cuda10.2_amd64.deb
+$ sudo dpkg -i libcudnn7-doc_7.6.5.32-1+cuda10.1_amd64.deb
 
 # check
 $ dpkg -l | grep cudnn
