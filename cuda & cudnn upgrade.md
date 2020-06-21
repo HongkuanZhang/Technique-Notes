@@ -1,4 +1,4 @@
-# Cuda10.2 upgrade
+# Cuda10.1 upgrade
 
 1.事前準備
 ```
@@ -7,50 +7,32 @@ $ dpkg -l | grep nvidia
 $ dpkg -l | grep cuda
 ```
 
-2.古いcudaとDriverをアンインストール
+2.古いcudaをアンインストール
 ```
-$ sudo apt-get --purge remove nvidia-*
 $ sudo apt-get --purge remove cuda-*
 $ sudo rm -rf /usr/local/cuda* 
 ```
 
-3.リポジトリを登録
+3.Cuda10.1をインストール
 ```
-$ sudo add-apt-repository ppa:graphics-drivers/ppa
-$ sudo apt update
-```
-
-4.ドライバーのインストール
-```
-$ ubuntu-drivers devices # 推奨ドライバーのバージョンを確認
-$ sudo apt install nvidia-driver-440  nvidia-settings
-$ sudo reboot
-$ nvidia-smi  # GPUが認識されているかを確認
-```
-
-5.NVIDIAのウェブからCuda10.2をインストール
-```
-# Select Target Platform
+# Select target platform and get the url for download (https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-ubuntu1604-10-1-local-10.1.105-418.39_1.0-1_amd64.deb)
 Operating system: Linux
 Architecture: x86_64
 Distribution: ubuntu
 Version: 16.04
 Install type: dev(local)
 
-# Install according to the commands provided by official site
-$ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
-$ sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
-$ wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda-repo-ubuntu1804-10-2-local-10.2.89-440.33.01_1.0-1_amd64.deb
-$ sudo dpkg -i cuda-repo-ubuntu1804-10-2-local-10.2.89-440.33.01_1.0-1_amd64.deb
-$ sudo apt-key add /var/cuda-repo-10-2-local-10.2.89-440.33.01/7fa2af80.pub
-$ sudo apt update
-$ sudo apt -y install cuda
+# Downloading deb file with url above by wget and installing according to the commands below (notice: this method will update necessary Nvidia driver automatically to the "at least version" instead of latest version)
+$ wget https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-ubuntu1604-10-1-local-10.1.105-418.39_1.0-1_amd64.deb
+$ sudo dpkg -i cuda-repo-ubuntu1604-10-1-local-10.1.105-418.39_1.0-1_amd64.deb
+$ sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub
+$ sudo apt-get update
+$ sudo apt-get install cuda
 
-# add path in .bashrc
-$ echo 'export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}' >> ~/.bashrc
-$ echo 'export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc
-$ source ~/.bashrc
-$ sudo ldconfig
+# add path in .zshrc
+export PATH=/usr/local/cuda-10.1/bin:$PATH  
+export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
+export CUDA_HOME=/usr/local/cuda
 
 # Confirm
 $ ncvv -V
