@@ -9,7 +9,7 @@ $ dpkg -l | grep cuda
 
 2.古いcudaをアンインストール
 ```
-$ sudo apt-get --purge remove cuda-*
+$ sudo apt-get --purge remove "cuda*"
 $ sudo rm -rf /usr/local/cuda* 
 ```
 
