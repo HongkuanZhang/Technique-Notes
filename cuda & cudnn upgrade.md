@@ -30,8 +30,8 @@ $ sudo apt-get update
 $ sudo apt-get install cuda
 
 # add path in .zshrc
-export PATH=/usr/local/cuda-10.1/bin:$PATH  
-export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda/bin:$PATH  
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 export CUDA_HOME=/usr/local/cuda
 
 # Confirm
