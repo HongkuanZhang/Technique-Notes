@@ -36,6 +36,9 @@ export CUDA_HOME=/usr/local/cuda
 
 # Confirm
 $ ncvv -V
+
+# Restart server
+$ sudo reboot
 ```
 
 # cuDNN 7.6.5 upgrade
